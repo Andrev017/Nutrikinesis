@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrikinesis</title>
+    <!-------------------------------- Bootstrap CSS ---------------------------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para el icono -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <link rel = "stylesheet" href = "{{ url_for('static', filename='css/login.css') }}" />
+    <link rel = "stylesheet" href = "{{ url_for('static', filename='css/estilos.css') }}" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #036666;">
+        <div class="container-fluid">
+
+            <div class="btn">
+                <a class="navbar-brand"  href="/">
+                    <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Nutrikinesis" width="30" height="24">
+                </a>
+            </div>
+
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+                    </li>
+
+                    <!--p>Has iniciado sesión como: {{ session['usuario_logueado'] }} </p-->
+                    {% if session['usuario_logueado'] != None %}
+                        {% if session['rol'] == 'vendedor' %}
+
+
+
+                    <!-- ---------------------- PARTE DEL MENU USUARIO ----------------------------------- -->
+
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/ver_mapa">RECETAS</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/ejercicios">RUTINAS</a>
+                            </li>
+
+                            <!--li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="productoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    RUTINAS
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="productoDropdown">
+                                    <li><a class="dropdown-item" href="#">SENTADILLAS</a></li>
+                                    <li><a class="dropdown-item" href="#">FLCCIONES</a></li>
+                                    <li><a class="dropdown-item" href="#">EJERCICIO 3</a></li>
+                                </ul>
+                            </li-->
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/ver_mapa">CALCULADORA Y PESO IDEAL</a>
+                            </li>
+                        {% else %}
+
+
+
+                    <!-- --------------------------- PARTDE DEL MENU DEL ADMINISTRATIVO ---------------------------------- -->
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                                    reportes
+
+                                </a>
+                                <!--ul class="dropdown-menu" aria-labelledby="productoDropdown">
+                                    <li><a class="dropdown-item" href="#">Reporte de ventas 1</a></li>
+                                    <li><a class="dropdown-item" href="#">Clientes Morosos 2</a></li>
+                                    <li><a class="dropdown-item" href="#">Clientes al día 3</a></li>
+                                </ul-->
+                            </li>
+                        {% endif %}
+
+                    {% endif %}
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="contactoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            CONTACTO
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="contactoDropdown">
+                            <li><a class="dropdown-item" href="/ejercicios">Formulario de contacto</a></li>
+                            <li><a class="dropdown-item" href="#">Ubicación</a></li>
+                            <li><a class="dropdown-item" href="#">Información de contacto</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- --------------------------------- PARTE DEL INICIO DE SESION Y CIERRE ------------------------->
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        {% if 'usuario_logueado' not in session or session['usuario_logueado'] == None %}
+                            <li><a class="dropdown-item" href="{{ url_for('login') }}">Login</a></li>
+                        {% else %}
+                            <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+                        {% endif %}
+                            <li><a class="dropdown-item" href="#">Perfil</a></li>
+                            <li><a class="dropdown-item" href="#">Configuración</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <body>
+
+    {% block contenido %}
+
+    {% endblock %}
+
+    </body>
+    <!-- Bootstrap Bundle con Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

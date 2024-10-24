@@ -1,0 +1,35 @@
+/*--------------------------------parte del cuerpo--------------------------------------------------------------*/
+    .imge_1{
+    background-color: #1d35576c;
+    z-index: 5;
+}
+.img_1{
+
+    height:40em;
+    width:100%;
+    z-index: -5;
+    object-fit: cover;
+
+}
+.texto_content{
+    color: #fff;
+    position: absolute;
+    width: 60%;
+    text-align: left;
+    margin-left: 20px;
+    top: 200px;
+    z-index: 10;
+    background-color: #0005;
+    font-size: 14px;
+}
+
+.texto_content p {
+    padding: 1.5em;
+    width: 100%;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.texto_content h2{
+    font-size: 50px;
+}
