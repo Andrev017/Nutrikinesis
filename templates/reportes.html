@@ -1,0 +1,52 @@
+{% extends "template.html" %}
+{% block contenido %}
+
+ <div class="container mt-5">
+        <h2 class="mb-4">Reporte de Usuarios</h2>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Peso (kg)</th>
+                    <th>Estatura (m)</th>
+                    <th>Sexo</th>
+                    <th>IMC</th>
+                    <th>Calorías</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.edad }}</td>
+                    <td>{{ usuario.peso }}</td>
+                    <td>{{ usuario.estatura }}</td>
+                    <td>{{ usuario.sexo }}</td>
+                    <td>{{ usuario.imc }}</td>
+                    <td>{{ usuario.calorias }}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                        </button>
+                        <button class="btn btn-danger btn-sm">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+     <br>
+        <a href="{{ url_for('generar_pdf') }}" class="btn btn-secondary">
+            <i class="fa-solid fa-download"></i> Generar PDF
+        </a>
+    </div>
+
+
+
+{% include 'footer.html' %}
+{% endblock %}
+
+

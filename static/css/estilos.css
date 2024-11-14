@@ -11,6 +11,11 @@
     object-fit: cover;
 
 }
+
+nav{
+    color: #fff;
+}
+
 .texto_content{
     color: #fff;
     position: absolute;

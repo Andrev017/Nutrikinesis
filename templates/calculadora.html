@@ -1,0 +1,92 @@
+{% extends "template.html" %}
+{% block contenido %}
+<br>
+    <div class="container">
+        <h3>IMC Calculadora</h3>
+        <p>Controle su Índice de Masa Corporal con esta herramienta</p>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Eliminar campos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Historial</a>
+                </li>
+            </ul>
+        </div>
+
+        <section>
+            <form method="post" action="/calculadora">
+                <div class="mb-3">
+                    <label class="form-label">Estatura (metros)</label>
+                    <input type="text" id="tamaño" name="tamaño" class="form-control" placeholder="Metros" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Peso (kilogramos)</label>
+                    <input type="text" id="peso" name="peso" class="form-control" placeholder="Kilogramos" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Calcular</button>
+
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa-solid fa-download"></i> Generar PDF
+                </button>
+            </form>
+        </section>
+
+        {% if imc %}
+        <hr>
+        <h4>Tu IMC: {{ imc|round(2) }}</h4>
+        <p>
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Gráfico de IMC" class="img-fluid">
+        </p>
+        {% endif %}
+    </div><br><br>
+
+
+
+    <div class="container">
+        <h3>Calculadora de Calorias</h3>
+        <p>Controle las calorias que debe comer</p>
+
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="edad">Edad</span>
+          <input type="text" class="form-control" aria-label="Sizing example input">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="input">Estatura</span>
+          <input type="text" class="form-control" aria-label="Sizing example input"
+                 aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">Peso</span>
+          <input type="text" class="form-control" aria-label="Sizing example input"
+                 aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <div class="input-group mb-3">
+          <select class="form-select" id="inputGroupSelect01">
+            <option selected>Sexo</option>
+            <option value="1">Hombre</option>
+            <option value="2">Mujer</option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="actividad">Nivel de Actividad</span>
+          <input type="text" class="form-control" aria-label="Sizing example input"
+                 aria-describedby="inputGroup-sizing-default">
+        </div>
+
+        <button type="button" class="btn btn-primary">Calcular</button>
+        <button type="button" class="btn btn-secondary">
+            <i class="fa-solid fa-download"></i> Generar PDF</button>
+    </div><br><br>
+
+{% include 'footer.html' %}
+{% endblock %}

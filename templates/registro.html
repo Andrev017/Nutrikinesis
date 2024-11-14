@@ -1,0 +1,44 @@
+    <script>
+
+        const emailValido = email => {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+        function validar(f) {
+            var nn = f.nombre.value;
+
+            if (!emailValido(f.email.value)) {
+                alert("Por favor, escribe un correo válido");
+                f.email.focus();
+                return false;
+            }
+            if (ok == false)
+                alert(msg);
+            return ok;
+        }
+    </script>
+
+    <div class="container">
+        <div class="login-form">
+            <h2 class="text-center mb-4">Registrarse</h2>
+            <form action="#" method="post" onsubmit="return validar(this)" >
+            <div class="mb-3">
+                <input type="text" class="form-control" id="username" name="username" required
+                       placeholder="Nombre" maxlength="20" minlength="3">
+                <input type="text" class="form-control" id="edad" name="edad" required
+                       placeholder="Edad" max="90" min="5">
+                <input type="text" class="form-control" id="estatura" name="estatura" required
+                       placeholder="Estatura en Metros" max="2.20">
+                <input type="text" class="form-control" id="peso" name="peso" required
+                       placeholder="Peso en Kg" ><br>
+                <select name="select" required placeholder="Sexo" class="select">
+                    <option value="">Hombre</option>
+                    <option value="">Mujer</option>
+                    <option value="">Prefiero no decirlo</option>
+                </select>
+
+
+            </div>
+
+            </form>
+        </div>
+    </div>
