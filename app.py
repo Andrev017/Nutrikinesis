@@ -40,7 +40,7 @@ app.secret_key = 'cochabamba'
 
 #------------------------------------- PARTE DEL CHATBOT-----------------------------
 
-genai.configure(api_key="AIzaSyBcOIKZB2fDDHwV1lSZivxDEVvmwbjo33Q")
+genai.configure(api_key="codigo-api")
 # Define el modelo
 model = genai.GenerativeModel("gemini-1.5-flash")
 
